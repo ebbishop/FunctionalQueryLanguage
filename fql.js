@@ -30,7 +30,32 @@ function merge (obj1, obj2) {
 	return objReturn
 }
 
-function FQL (table) {}
+function FQL (table) {
+	this.table = table;
+	this.subset = table;
+}
+
+//returns current result
+FQL.prototype.exec = function(){
+	var copier = function() {
+		var table = this.subset;
+		return table;
+	}
+	var copied = copier.bind(this);
+	this.subset = this.table;
+	return copied();
+}
+
+//returns number of records in result set
+FQL.prototype.count = function() {
+	return this.subset.length;
+};
+
+//limits result set to x rows
+FQL.prototype.limit = function(x) {
+	this.subset = this.subset.slice(0,x);
+	return this;
+};
 
 module.exports = {
 	FQL: FQL,
