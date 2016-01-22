@@ -48,12 +48,12 @@ describe('Functional Query Language', function () {
    * Should have an exec() function that returns the
    * current internal data set of the FQL class
    */
-  xit('should have an exec function', function () {
+  it('should have an exec function', function () {
     var all_movies = moviesTable.exec();
     expect(all_movies).toEqual(movies);
   });
 
-  xit('should have a count method', function () {
+  it('should have a count method', function () {
     // count() returns how many records are in the movies array
     // check 0_movies.js for the data set
     // 
@@ -66,7 +66,7 @@ describe('Functional Query Language', function () {
    *  cut out the first X rows.  count() should 
    *  then show only those rows.
    */
-  xit('should have a limit() method', function () {
+  it('should have a limit() method', function () {
     expect(moviesTable.limit(5).count()).toEqual(5);
   });
 
@@ -74,14 +74,14 @@ describe('Functional Query Language', function () {
    * The exec() function should returns the
    * current result of the chained query
    */
-  xit('should limit and have chained exec function', function () {
+  it('should limit and have chained exec function', function () {
     // this will return the first movie row, Aliens
     var first_movie = moviesTable.limit(1).exec();
     expect(first_movie.length).toEqual(1);
     expect(first_movie[0].name).toEqual("Aliens");
   });
 
-  xit('should reset to original data after exec', function () {
+  it('should reset to original data after exec', function () {
     moviesTable.limit(1).exec();
     var all_movies = moviesTable.exec();
     expect(all_movies).toEqual(movies);

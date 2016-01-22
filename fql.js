@@ -17,7 +17,18 @@ function _readTable (tableName) {
 	return table;
 }
 
-function merge (obj1, obj2) {}
+function merge (obj1, obj2) {
+	var objReturn = {};
+
+	for (var key in obj1){
+		objReturn[key] = obj1[key];
+	}
+	for (var key in obj2){
+		objReturn[key] = obj2[key];
+	}
+
+	return objReturn
+}
 
 function FQL (table) {}
 
